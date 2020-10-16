@@ -12,11 +12,9 @@ Commands:
   pull
   help [command]  display help for command
   
-  
-## Installation
-
-npm install -g ./
-
 ## Assumes
 - You have git installed
 - Your projcet is using git duet: https://github.com/git-duet/git-duet
+  
+## Installation
+`git clone https://github.com/ericTsiliacos/portal.git && cd portal && npm install -g ./ && cd -`
