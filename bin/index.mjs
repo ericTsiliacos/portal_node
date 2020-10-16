@@ -2,37 +2,63 @@
 
 import program from "commander";
 import git from "simple-git";
-import { v4 as uuidv4 } from "uuid";
-import process from "child_process";
 
-program.command("push").action(() => {
-  const branch = uuidv4();
-  console.log("pushing to temporary branch");
-  git()
-    .checkoutLocalBranch(branch)
-    .add("./*")
-    .commit("WIP")
-    .push(["origin", "head"], () => {
-      copy(branch);
-      console.log("done");
-    })
-    .checkout("-");
+program.command("push").action(async () => {
+  console.log("Coming your way...");
+  try {
+    const branch = await fetchBranch();
+
+    git()
+      .checkoutLocalBranch(branch)
+      .add("./*")
+      .commit("WIP")
+      .push(["origin", "head"], () => {
+        console.log("Sent!");
+      })
+      .checkout("-");
+  } catch (e) {
+    console.log(e);
+  }
 });
 
-program.command("pull <branch>").action(branch => {
-  console.log("pulling temporary branch");
-  git()
-    .checkout(branch)
-    .reset(["HEAD^"])
-    .checkout("-")
-    .branch(["-d", branch])
-    .push(["origin", "--delete", branch], () => console.log("done"));
+program.command("pull").action(async () => {
+  console.log("I see you...");
+  try {
+    const branch = await fetchBranch();
+    git()
+      .checkout(branch)
+      .reset(["HEAD^"])
+      .checkout("-")
+      .branch(["-d", branch])
+      .push(["origin", "--delete", branch], () => console.log("Got it!"));
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 program.parse(process.argv);
 
-function copy(data) {
-  var proc = process.spawn("pbcopy");
-  proc.stdin.write(data);
-  proc.stdin.end();
+async function fetchBranch() {
+  const authors = await Promise.all([
+    rawGit(["config", "--get", "duet.env.git-author-initials"]),
+    rawGit(["config", "--get", "duet.env.git-committer-initials"]),
+  ]);
+
+  return authors
+    .map(author => author.replace(/\n/g, ""))
+    .sort((a, b) => a.localeCompare(b))
+    .join("-")
+    .replace(/^/, "portal-");
+}
+
+function rawGit(command) {
+  return new Promise((resolve, reject) => {
+    git().raw(command, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
 }
