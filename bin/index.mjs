@@ -4,7 +4,7 @@ import program from "commander";
 import git from "simple-git";
 
 program.command("push").action(async () => {
-  console.log("Coming your way...");
+  console.log("🌀 Coming your way...");
   try {
     const branch = await fetchBranch();
 
@@ -13,7 +13,7 @@ program.command("push").action(async () => {
       .add("./*")
       .commit("WIP")
       .push(["origin", "head"], () => {
-        console.log("Sent!");
+        console.log("✨ Sent!");
       })
       .checkout("-")
       .branch(["-D", branch]);
@@ -23,7 +23,7 @@ program.command("push").action(async () => {
 });
 
 program.command("pull").action(async () => {
-  console.log("I see you...");
+  console.log("🌀 I see you...");
   try {
     const branch = await fetchBranch();
     git()
@@ -31,7 +31,7 @@ program.command("pull").action(async () => {
       .reset(["HEAD^"])
       .checkout("-")
       .branch(["-D", branch])
-      .push(["origin", "--delete", branch], () => console.log("Got it!"));
+      .push(["origin", "--delete", branch], () => console.log("✨ Got it!"));
   } catch (e) {
     console.log(e);
   }
