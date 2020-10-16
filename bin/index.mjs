@@ -2,36 +2,42 @@
 
 import program from "commander";
 import git from "simple-git";
+import ora from "ora";
 
 program.command("push").action(async () => {
-  console.log("🌀 Coming your way...");
   try {
+    const throbber = ora("Coming your way...").start();
+
     const branch = await fetchBranch();
 
     git()
       .checkoutLocalBranch(branch)
       .add("./*")
       .commit("WIP")
-      .push(["origin", "head"], () => {
-        console.log("✨ Sent!");
-      })
+      .push(["origin", "head"])
       .checkout("-")
-      .branch(["-D", branch]);
+      .branch(["-D", branch], () => {
+        throbber.stop();
+        console.log("✨ Sent!");
+      });
   } catch (e) {
     console.log(e);
   }
 });
 
 program.command("pull").action(async () => {
-  console.log("🌀 I see you...");
   try {
+    const throbber = ora("Coming your way...").start();
     const branch = await fetchBranch();
     git()
       .checkout(branch)
       .reset(["HEAD^"])
       .checkout("-")
       .branch(["-D", branch])
-      .push(["origin", "--delete", branch], () => console.log("✨ Got it!"));
+      .push(["origin", "--delete", branch], () => {
+        throbber.stop();
+        console.log("✨ Got it!");
+      });
   } catch (e) {
     console.log(e);
   }
