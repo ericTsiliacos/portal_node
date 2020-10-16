@@ -3,6 +3,8 @@
 ## A project for switching between machines when driving remote pairing.
 
 Usage:
+Assumsing both pairs have done `git duet <person-1> <person-2>`
+
 - `portal push`: pushes local changes to a remote branch based on your git-duet pairing (ex. portal-fk-eb)
 
 - `portal pull`: pulls the changes at the git-duet based branch name and deletes the remote branch
