@@ -1,7 +1,5 @@
 # 🌀 Portal
 
-## A project for switching between machines when driving remote pairing.
-
 Usage:
 Assumsing both pairs have done `git duet <person1> <person2>`
 
