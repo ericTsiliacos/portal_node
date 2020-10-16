@@ -1,5 +1,7 @@
 # portal
 
+A project for switching between machines when pairing and working remotely.
+
 Usage: portal [options] [command]
 
 Options:
