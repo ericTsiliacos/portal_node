@@ -15,7 +15,8 @@ program.command("push").action(async () => {
       .push(["origin", "head"], () => {
         console.log("Sent!");
       })
-      .checkout("-");
+      .checkout("-")
+      .branch(["-D", branch]);
   } catch (e) {
     console.log(e);
   }
@@ -29,7 +30,7 @@ program.command("pull").action(async () => {
       .checkout(branch)
       .reset(["HEAD^"])
       .checkout("-")
-      .branch(["-d", branch])
+      .branch(["-D", branch])
       .push(["origin", "--delete", branch], () => console.log("Got it!"));
   } catch (e) {
     console.log(e);
