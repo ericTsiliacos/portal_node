@@ -11,7 +11,7 @@ Assumsing both pairs have done `git duet <person1> <person2>`
   
 ### Assumes
 - You have git installed
-- Your projcet is using git duet: https://github.com/git-duet/git-duet
+- Your project is using git duet: https://github.com/git-duet/git-duet
 - Node.js
   
 ### Installation
