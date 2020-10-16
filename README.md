@@ -1,4 +1,4 @@
-# 🌀 Portal
+# P🌀rtal
 
 ## A project for switching between machines when driving remote pairing.
 
