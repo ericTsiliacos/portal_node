@@ -1,6 +1,6 @@
 # Portal
 
-## A project for switching between machines when pairing and working remotely.
+## A project for switching between machines when remote pairing.
 
 Usage:
 - `portal push`: pushes local changes to a remote branch based on your git-duet pairing (ex. portal-fk-eb)
