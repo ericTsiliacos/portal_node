@@ -2,15 +2,10 @@
 
 ## A project for switching between machines when pairing and working remotely.
 
-Usage: portal [options] [command]
+Usage:
+- `portal push`: pushes local changes to a remote branch based on your git-duet pairing (ex. portal-fk-eb)
 
-Options:
-  -h, --help      display help for command
-
-Commands:
-  push
-  pull
-  help [command]  display help for command
+- `portal pull`: pulls the changes at the git-duet based branch name and deletes the remote branch
   
 ### Assumes
 - You have git installed
