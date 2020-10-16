@@ -10,6 +10,7 @@ Usage:
 ### Assumes
 - You have git installed
 - Your projcet is using git duet: https://github.com/git-duet/git-duet
+- Node.js
   
 ### Installation
 `git clone https://github.com/ericTsiliacos/portal.git && cd portal && npm install -g ./ && cd -`
