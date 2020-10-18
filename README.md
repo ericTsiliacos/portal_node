@@ -1,4 +1,4 @@
-# 🌀 Portal
+# 🌀 Portal (written in Node.js)
 
 Usage:
 Assumsing both pairs have done `git duet <person1> <person2>`
