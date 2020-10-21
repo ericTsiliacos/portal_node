@@ -13,4 +13,4 @@ Assumsing both pairs have done `git duet <person1> <person2>`
 - Node.js
   
 ### Installation
-`git clone https://github.com/ericTsiliacos/portal.git && cd portal && npm install -g ./ && cd -`
+`git clone https://github.com/ericTsiliacos/portal_node.git portal && cd portal && npm install -g ./ && cd -`
